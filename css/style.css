@@ -1,0 +1,321 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+@font-face {
+  font-family: Inter;
+  src: local("Inter-Regular"), url("../fonts/Inter-Regular.woff2") format("woff2"), url("../fonts/Inter-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Inter;
+  src: local("Inter-Medium"), url("../fonts/Inter-Medium.woff2") format("woff2"), url("../fonts/Inter-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Inter;
+  src: local("Inter-SemiBold"), url("../fonts/Inter-SemiBold.woff2") format("woff2"), url("../fonts/Inter-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  background-color: #f5f5f5;
+  font-family: Inter, sans-serif;
+}
+
+/* glob */
+.flex {
+  display: flex;
+}
+
+.list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.container {
+  max-width: 805px;
+  margin: 10% auto;
+}
+
+/* control */
+.control {
+  padding-bottom: 6px;
+  border-bottom: 1px solid #e3e5eb;
+  font-weight: 500;
+  font-size: 12px;
+  color: #959ba4;
+}
+
+.control__list {
+  gap: 22px;
+  margin-right: auto;
+  padding-bottom: 3px;
+}
+
+.control__item {
+  padding: 0 2px;
+}
+
+.control__item:first-child {
+  position: relative;
+  color: #374151;
+}
+
+.control__item:first-child::before {
+  content: "";
+  position: absolute;
+  bottom: -11px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 1px;
+  background-color: #374151;
+}
+
+.switch-container {
+  align-items: center;
+  gap: 8px;
+}
+
+.switch-container__label_waiting {
+  order: 1;
+  transition: color 0.3s ease;
+}
+
+.switch-container__label_reality {
+  order: 3;
+  transition: color 0.3s ease;
+}
+
+.switch {
+  order: 2;
+  cursor: pointer;
+  margin-top: -18px;
+  padding-right: 33px;
+}
+
+.switch__slider {
+  position: relative;
+}
+
+.switch__slider::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 33px;
+  height: 18px;
+  border-radius: 9px;
+  border: 1px solid #374151;
+  background-color: transparent;
+}
+
+.switch__slider::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  background-color: #374151;
+  transition: left 0.3s ease;
+}
+
+.switch__input:checked ~ .switch > .switch__slider::after {
+  left: 18px;
+}
+
+.switch__input:checked ~ .switch-container__label_reality{
+  color: #374151;
+}
+
+.switch__input:not(:checked) ~ .switch-container__label_waiting{
+  color: #374151;
+}
+
+/* widget */
+.wrapper {
+  gap: 30px;
+}
+
+.widget-container {
+  width: 100%;
+  padding: 15px 0;
+}
+
+.widget-container_small {
+  flex-shrink: 0;
+  width: 190px;
+  padding: 15px 0;
+}
+
+.widget {
+  flex-direction: column;
+  width: 100%;
+  max-width: 225px;
+  padding: 13px 14px;
+  border-radius: 10px;
+  border: 1px solid #e3e5eb;
+  background-color: #fbfbfb;
+}
+
+.widget__header {
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 12px;
+  color: #959ba4;
+}
+
+.widget__wrapper {
+  position: relative;
+}
+
+.widget__wrapper::before {
+  content: "Объем выручки на текущий момент";
+  position: absolute;
+  bottom: 12px;
+  left: 10px;
+  width: 155px;
+  height: 40px;
+  padding: 8px;
+  border-radius: 6px;
+  transform: scale(0);
+  border: 1px solid #e3e5eb;
+  background-color: #fbfbfb;
+  font-weight: 400;
+  line-height: 120%;
+  font-size: 10px;
+  color: #374151;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.widget__wrapper-small:hover::before {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.widget__wrapper-big:hover::before {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.widget__amount {
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #374151;
+}
+
+.widget__progress-title {
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 12px;
+  color: #959ba4;
+}
+
+.widget__progress-item:first-of-type {
+  margin-bottom: 7px;
+}
+
+.widget__progress-bar-label {
+  margin-bottom: 4px;
+  font-size: 10px;
+  color: #374151;
+}
+
+.widget__progress-bar-name {
+  margin-right: auto;
+}
+
+.widget__progress-bar {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: #e3e5eb;
+}
+
+.widget__progress-bar-help {
+  position: absolute;
+  top: -40px;
+  left: 20px;
+  width: 131px;
+  transform: scale(0);
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #e3e5eb;
+  background-color: #fbfbfb;
+  font-size: 10px;
+  color: #374151;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.widget__progress-bar_plan-small:hover > .widget__progress-bar-help_plan-small {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.widget__progress-bar_plan-big:hover > .widget__progress-bar-help_plan-big {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.widget__progress-bar_forecast-small:hover > .widget__progress-bar-help_forecast-small {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.widget__progress-bar_forecast-big:hover > .widget__progress-bar-help_forecast-big {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.widget__progress-bar-help-text {
+  font-weight: 600;
+}
+
+.widget__progress-bar-fill {
+  height: 4px;
+  border-radius: 2px;
+  background-color: #4cc125;
+}
+
+.widget__progress-bar-fill_plan {
+  width: 55%;
+}
+
+.widget__progress-bar-fill_forecast {
+  width: 23%;
+}
